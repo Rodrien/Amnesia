@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'PassVault',
+      title: 'Amnesia',
       theme: ThemeData(
         primaryColor: Colors.greenAccent,
         primarySwatch: Colors.blue,

@@ -7,13 +7,11 @@ Gestor de contraseñas opensource creado con Flutter.
 - Encriptacion (proximamente)
 
 ## Snapshots
-<img src="/Snapshots/Ejemplo7.png">
-<img src="/Snapshots/Ejemplo8.png">
-<img src="/Snapshots/Ejemplo9.png">
-<img src="/Snapshots/Ejemplo10.png">
+<img src="/Snapshots/Ejemplo11.png">
+<img src="/Snapshots/Ejemplo12.png">
+<img src="/Snapshots/Ejemplo13.png">
 
 ## A actualizar/agregar/cambiar
-- Crear nuevo repo con nuevo proyecto desde 0, nombrado Amnesia, asi quedan los paquetes todos cambiados como tiene que ser
 - Add list tile on tap feedback
 - Actualizar logo
 - Temas blanco con azul y negro con azul?) (O dejamos el verde?)
@@ -26,3 +24,5 @@ Gestor de contraseñas opensource creado con Flutter.
 - Armar pagina principal con autenticacion de contraseña
 - Agregar encriptacion de las contraseñas (https://pub.dev/packages/encrypt,https://pub.dev/packages/aes_crypt)
 - Build and deploy (flutter build apk --split-per-abi) (en la raiz del directorio)
+
+flutter pub run flutter_launcher_icons:main

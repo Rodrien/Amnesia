@@ -11,6 +11,15 @@ List<String> genericos = [
   "Juegos",
 ];
 List<String> especificos = [
+  "LinkedIn",
+  "Windows",
+  "Spotify",
+  "MercadoLibre",
+  "Prex",
+  "MercadoPago",
+  "PedidosYa",
+  "Pinterest",
+  "Skype",
   "Google",
   "Facebook",
   "Instagram",
