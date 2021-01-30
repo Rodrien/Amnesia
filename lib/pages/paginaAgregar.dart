@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:Amnesia/DatabaseHelper.dart';
-import 'package:Amnesia/model/entrada.dart';
-import 'package:Amnesia/inicio.dart';
+import 'package:amnesia/DatabaseHelper.dart';
+import 'package:amnesia/model/entrada.dart';
+import 'package:amnesia/inicio.dart';
 
 class PaginaAgregar extends StatefulWidget {
   @override

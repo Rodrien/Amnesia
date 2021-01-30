@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:Amnesia/DatabaseHelper.dart';
+import 'package:amnesia/DatabaseHelper.dart';
 import 'package:flutter/services.dart';
-import 'package:Amnesia/inicio.dart';
-import 'package:Amnesia/model/entrada.dart';
-import 'package:Amnesia/listaBloc.dart';
+import 'package:amnesia/inicio.dart';
+import 'package:amnesia/model/entrada.dart';
+import 'package:amnesia/listaBloc.dart';
 
 class Lista extends StatefulWidget {
   //final bool passOcultas;
@@ -28,7 +28,7 @@ class _ListaState extends State<Lista> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.only(top: 10),
-      color: Colors.black,
+      //color: Colors.black,
       child: StreamBuilder<List<Entrada>>(
         stream: lista.lista,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -41,9 +41,7 @@ class _ListaState extends State<Lista> {
                   return Dismissible(
                     key: ObjectKey(snapshot.data[index].id),
                     background: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.black,
-                      ),
+                      decoration: BoxDecoration(),
                       padding: EdgeInsets.only(left: 20),
                       child: Icon(
                         Icons.delete,
@@ -80,64 +78,77 @@ class _ListaState extends State<Lista> {
                       padding: EdgeInsets.only(bottom: 10),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(15),
-                        child: ListTile(
-                          tileColor: Color.fromARGB(255, 15, 15, 15),
-                          key: ObjectKey(snapshot.data[index].id),
-                          onTap: () {
-                            Clipboard.setData(new ClipboardData(
-                                text: snapshot.data[index].password));
-                          },
-                          contentPadding: EdgeInsets.only(
-                              top: 5, bottom: 5, left: 15, right: 15),
-                          hoverColor: Colors.greenAccent,
-                          leading: Container(
-                            child: CircleAvatar(
-                              radius: 28,
-                              backgroundColor: Colors.transparent,
-                              backgroundImage: AssetImage(
-                                  'assets/images/${snapshot.data[index].plataForma}_icon.png'),
-                            ),
-                          ),
-                          isThreeLine: true,
-                          title: RichText(
-                            text: TextSpan(
-                              children: <TextSpan>[
-                                TextSpan(
-                                  text: "${snapshot.data[index].titulo}",
-                                  style: TextStyle(
-                                    color: Colors.greenAccent,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                        child: Material(
+                          color: Colors.black,
+                          elevation: 1,
+                          child: InkWell(
+                            //enableFeedback: true,
+                            //focusColor: Colors.greenAccent,
+                            //hoverColor: Colors.red,
+                            //highlightColor: Colors.greenAccent,
+                            splashColor: Colors.greenAccent,
+                            child: ListTile(
+                              tileColor: Color.fromARGB(255, 20, 20, 20),
+                              key: ObjectKey(snapshot.data[index].id),
+                              onLongPress: () {
+                                Clipboard.setData(
+                                  ClipboardData(
+                                      text: snapshot.data[index].password),
+                                );
+                              },
+                              contentPadding: EdgeInsets.only(
+                                  top: 5, bottom: 5, left: 15, right: 15),
+                              hoverColor: Colors.greenAccent,
+                              leading: Container(
+                                child: CircleAvatar(
+                                  radius: 28,
+                                  backgroundColor: Colors.transparent,
+                                  backgroundImage: AssetImage(
+                                      'assets/images/${snapshot.data[index].plataForma}_icon.png'),
                                 ),
-                              ],
-                            ),
-                          ),
-                          subtitle: RichText(
-                            text: TextSpan(
-                              children: <TextSpan>[
-                                TextSpan(
-                                  text: "${snapshot.data[index].usuario}",
-                                  style: TextStyle(fontSize: 14),
+                              ),
+                              isThreeLine: true,
+                              title: RichText(
+                                text: TextSpan(
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: "${snapshot.data[index].titulo}",
+                                      style: TextStyle(
+                                        color: Colors.greenAccent,
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                TextSpan(
-                                  text: "\n" +
-                                      (passOcultas
-                                          ? "${snapshot.data[index].password}"
-                                          : "*" *
-                                              snapshot
-                                                  .data[index].password.length),
-                                  style: TextStyle(
-                                      fontSize: 14, color: Colors.white54),
+                              ),
+                              subtitle: RichText(
+                                text: TextSpan(
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                      text: "${snapshot.data[index].usuario}",
+                                      style: TextStyle(fontSize: 14),
+                                    ),
+                                    TextSpan(
+                                      text: "\n" +
+                                          (passOcultas
+                                              ? "${snapshot.data[index].password}"
+                                              : "*" *
+                                                  snapshot.data[index].password
+                                                      .length),
+                                      style: TextStyle(
+                                          fontSize: 14, color: Colors.white54),
+                                    ),
+                                  ],
                                 ),
-                              ],
-                            ),
-                          ),
-                          trailing: Container(
-                            height: double.infinity,
-                            child: Icon(
-                              Icons.star,
-                              color: Colors.white,
+                              ),
+                              trailing: Container(
+                                height: double.infinity,
+                                child: Icon(
+                                  Icons.star,
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
                           ),
                         ),

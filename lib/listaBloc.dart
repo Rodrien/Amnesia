@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'model/entrada.dart';
-import 'package:Amnesia/DatabaseHelper.dart';
+import 'package:amnesia/DatabaseHelper.dart';
 
 /* Usa streamBuilder, no esta usando la libreria de BLoC */
 

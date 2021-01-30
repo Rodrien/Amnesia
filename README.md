@@ -14,6 +14,7 @@ Gestor de contraseñas opensource creado con Flutter.
 
 ## A actualizar/agregar/cambiar
 - Crear nuevo repo con nuevo proyecto desde 0, nombrado Amnesia, asi quedan los paquetes todos cambiados como tiene que ser
+- Add list tile on tap feedback
 - Actualizar logo
 - Temas blanco con azul y negro con azul?) (O dejamos el verde?)
 - Agregar favoritos (bool en base de datos posiblemente)
