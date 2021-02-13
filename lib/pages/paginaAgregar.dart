@@ -9,7 +9,7 @@ class PaginaAgregar extends StatefulWidget {
 }
 
 class _PaginaAgregarState extends State<PaginaAgregar> {
-  String plataformaElegida = 'Estrella';
+  String plataformaElegida = 'Logo';
   final control0 = TextEditingController();
   final control1 = TextEditingController();
   final control2 = TextEditingController();
@@ -218,8 +218,14 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
 
   _guardarEntrada(String titu, String usu, String pass, String plat) async {
     if (titu != "" && usu != "" && pass != "") {
-      DatabaseHelper.instance.insertEntrada(Entrada(
-          titulo: titu, usuario: usu, password: pass, plataForma: plat));
+      DatabaseHelper.instance.insertEntrada(
+        Entrada(
+            titulo: titu,
+            usuario: usu,
+            password: pass,
+            plataForma: plat,
+            favorito: 0),
+      );
       Navigator.pushAndRemoveUntil(
           //Estudiar esto, nose porque pero funciona ahora, actualiza lo que deberia
           context,

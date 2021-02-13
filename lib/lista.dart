@@ -156,6 +156,7 @@ class _ListaState extends State<Lista> {
                               trailing: Container(
                                 height: double.infinity,
                                 child: Icon(
+                                  //Cuando se toca cambia el estado de favorito de la BD y actualiza la lista
                                   Icons.star,
                                   color: Colors.white,
                                 ),

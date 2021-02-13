@@ -5,6 +5,7 @@ import 'package:amnesia/pages/paginaAgregar.dart';
 //-------------- Variables --------------
 bool passOcultas = false;
 List<String> genericos = [
+  "Logo",
   "Estrella",
   "Mail",
   "Banco",

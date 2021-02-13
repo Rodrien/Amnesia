@@ -1,12 +1,19 @@
 class Entrada {
   //Las cuentas con su informacion se almacenan de la siguiente forma
   int id;
+  int favorito;
   String titulo;
   String usuario;
   String password;
   String plataForma;
 
-  Entrada({this.id, this.titulo, this.usuario, this.password, this.plataForma});
+  Entrada(
+      {this.id,
+      this.titulo,
+      this.usuario,
+      this.password,
+      this.plataForma,
+      this.favorito});
 
   Map<String, dynamic> toMap() {
     //Esto se usa para agregar a la BD
@@ -18,6 +25,7 @@ class Entrada {
     map['user'] = usuario;
     map['password'] = password;
     map['plataForma'] = plataForma;
+    map['favorito'] = favorito;
     return map;
   }
 }

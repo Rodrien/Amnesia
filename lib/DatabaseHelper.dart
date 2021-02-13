@@ -21,7 +21,7 @@ class DatabaseHelper {
     return await openDatabase(join(await getDatabasesPath(), databaseName),
         version: 1, onCreate: (Database db, int version) async {
       await db.execute(
-          "CREATE TABLE entradas(id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, user TEXT, password TEXT,plataForma TEXT)");
+          "CREATE TABLE entradas(id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, user TEXT, password TEXT,plataForma TEXT, favorito INTEGER)");
     });
   }
 
@@ -45,6 +45,7 @@ class DatabaseHelper {
         usuario: maps[i]["user"],
         password: maps[i]["password"],
         plataForma: maps[i]["plataForma"],
+        favorito: maps[i]["favorito"],
       );
     });
   }
