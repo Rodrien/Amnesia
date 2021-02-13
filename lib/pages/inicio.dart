@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'lista.dart';
-import 'pages/paginaAgregar.dart';
+import 'package:amnesia/lista.dart';
+import 'package:amnesia/pages/paginaAgregar.dart';
 
 //-------------- Variables --------------
 bool passOcultas = false;
@@ -29,6 +29,7 @@ List<String> especificos = [
   "Netflix",
   "Outlook",
   "PayPal",
+  "BPS",
 ]..sort(); //Ordena en orden alfabetico
 
 List<String> plataFormas = genericos + especificos;
@@ -90,7 +91,7 @@ class _InicioState extends State<Inicio> {
             )
           ],
           elevation: 0,
-          toolbarHeight: 25,
+          toolbarHeight: 30,
         ),
         body: Lista(),
         backgroundColor: Colors.black,

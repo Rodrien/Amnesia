@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'inicio.dart';
+import 'package:amnesia/pages/inicio.dart';
 //----------------- authentication -----------------
 //import 'package:local_auth_device_credentials/auth_strings.dart';
 //import 'package:local_auth_device_credentials/error_codes.dart';

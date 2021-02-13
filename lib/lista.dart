@@ -1,7 +1,8 @@
+import 'package:amnesia/pages/paginaEditar.dart';
 import 'package:flutter/material.dart';
 import 'package:amnesia/DatabaseHelper.dart';
 import 'package:flutter/services.dart';
-import 'package:amnesia/inicio.dart';
+import 'package:amnesia/pages/inicio.dart';
 import 'package:amnesia/model/entrada.dart';
 import 'package:amnesia/listaBloc.dart';
 
@@ -41,13 +42,18 @@ class _ListaState extends State<Lista> {
                   return Dismissible(
                     key: ObjectKey(snapshot.data[index].id),
                     background: Container(
-                      decoration: BoxDecoration(),
-                      padding: EdgeInsets.only(left: 20),
+                      padding: EdgeInsets.only(left: 20, right: 20),
                       child: Icon(
                         Icons.delete,
                         color: Colors.redAccent,
                       ),
                       alignment: AlignmentDirectional.centerStart,
+                    ),
+                    secondaryBackground: Container(
+                      padding: EdgeInsets.only(left: 20, right: 20),
+                      child: Icon(Icons.update_outlined,
+                          color: Colors.greenAccent),
+                      alignment: AlignmentDirectional.centerEnd,
                     ),
                     onDismissed: (directon) {
                       _eliminarEntrada(snapshot.data[index]);
@@ -61,7 +67,12 @@ class _ListaState extends State<Lista> {
                           return _confirmacionEliminar();
                         case DismissDirection.endToStart:
                           //Aca actualizar la entrada
-                          break;
+                          return pantallaEditar(
+                              snapshot.data[index].id,
+                              snapshot.data[index].plataForma,
+                              snapshot.data[index].titulo,
+                              snapshot.data[index].usuario,
+                              snapshot.data[index].password);
                         case DismissDirection.horizontal:
                           break;
                         case DismissDirection.vertical:
@@ -203,6 +214,23 @@ class _ListaState extends State<Lista> {
           ],
         );
       },
+    );
+  }
+
+  Future<bool> pantallaEditar(
+    int id,
+    String plat,
+    String tit,
+    String usu,
+    String pass,
+  ) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (BuildContext context) {
+          return PaginaEditar(id, plat, tit, usu, pass);
+        },
+      ),
     );
   }
 }

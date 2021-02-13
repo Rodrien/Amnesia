@@ -3,13 +3,22 @@ import 'package:amnesia/DatabaseHelper.dart';
 import 'package:amnesia/model/entrada.dart';
 import 'package:amnesia/pages/inicio.dart';
 
-class PaginaAgregar extends StatefulWidget {
+class PaginaEditar extends StatefulWidget {
+  final int idActual;
+  final String platActual;
+  final String titActual;
+  final String usuActual;
+  final String passActual;
+
+  PaginaEditar(this.idActual, this.platActual, this.titActual, this.usuActual,
+      this.passActual);
+
   @override
-  _PaginaAgregarState createState() => _PaginaAgregarState();
+  _PaginaEditarState createState() => _PaginaEditarState();
 }
 
-class _PaginaAgregarState extends State<PaginaAgregar> {
-  String plataformaElegida = 'Estrella';
+class _PaginaEditarState extends State<PaginaEditar> {
+  String plataformaElegida = "Estrella";
   final control0 = TextEditingController();
   final control1 = TextEditingController();
   final control2 = TextEditingController();
@@ -27,7 +36,7 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
             text: TextSpan(
               children: <TextSpan>[
                 TextSpan(
-                  text: "Nueva",
+                  text: "Actualizar",
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.greenAccent,
@@ -37,7 +46,7 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
                   ),
                 ),
                 TextSpan(
-                  text: "Cuenta",
+                  text: "Entrada",
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -55,16 +64,16 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
         color: Colors.black,
         child: Column(
           children: [
-            tarjeta("Titulo", control0),
-            tarjeta("Usuario", control1),
-            tarjeta("Contraseña", control2),
+            tarjeta(widget.titActual, control0),
+            tarjeta(widget.usuActual, control1),
+            tarjeta(widget.passActual, control2),
             Padding(
               padding: EdgeInsets.only(top: 15),
               child: RichText(
                 text: TextSpan(
                   children: <TextSpan>[
                     TextSpan(
-                      text: "Seleccione",
+                      text: "Actualizar",
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.greenAccent,
@@ -74,7 +83,7 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
                       ),
                     ),
                     TextSpan(
-                      text: " un logo",
+                      text: " el logo",
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
@@ -91,31 +100,19 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
           ],
         ),
       ),
-      floatingActionButton:
-          /*FloatingActionButton(
-        backgroundColor: Colors.greenAccent,
-        child: Icon(Icons.save_rounded, color: Colors.black),
-        onPressed: () {
-          _guardarEntrada(
-              control0.text, control1.text, control2.text, plataformaElegida);
-          //setState(() {});
-        },
-      ),*/
-          FloatingActionButton.extended(
-              backgroundColor: Colors.greenAccent,
-              icon: Icon(Icons.save_rounded, color: Colors.black),
-              label: Text(
-                "Guardar",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16),
-              ),
-              onPressed: () {
-                _guardarEntrada(control0.text, control1.text, control2.text,
-                    plataformaElegida);
-                //setState(() {});
-              }),
+      floatingActionButton: FloatingActionButton.extended(
+          backgroundColor: Colors.greenAccent,
+          icon: Icon(Icons.save_rounded, color: Colors.black),
+          label: Text(
+            "Actualizar",
+            style: TextStyle(
+                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+          ),
+          onPressed: () {
+            _actualizarEntrada(widget.idActual, control0.text, control1.text,
+                control2.text, plataformaElegida);
+            //setState(() {});
+          }),
     );
   }
 
@@ -143,7 +140,7 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
                 color: Colors.white,
               ),
             ),
-            controller: controlador,
+            controller: controlador..text = selector,
             enableInteractiveSelection: true,
             autofocus: false, //(selector == 1 ? true : false),
             textAlign: TextAlign.start,
@@ -216,10 +213,15 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
     );
   }
 
-  _guardarEntrada(String titu, String usu, String pass, String plat) async {
+  _actualizarEntrada(
+      int idActual, String titu, String usu, String pass, String plat) async {
     if (titu != "" && usu != "" && pass != "") {
-      DatabaseHelper.instance.insertEntrada(Entrada(
-          titulo: titu, usuario: usu, password: pass, plataForma: plat));
+      DatabaseHelper.instance.updateEntrada(Entrada(
+          id: idActual,
+          titulo: titu,
+          usuario: usu,
+          password: pass,
+          plataForma: plat));
       Navigator.pushAndRemoveUntil(
           //Estudiar esto, nose porque pero funciona ahora, actualiza lo que deberia
           context,
@@ -237,7 +239,7 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
               style: TextStyle(color: Colors.white),
             ),
             content: Text(
-              "No puede dejar campos vacios.",
+              "Error al actualizar",
               style: TextStyle(color: Colors.white),
             ),
           );
