@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:amnesia/pages/inicio.dart';
+//import 'package:amnesia/pages/inicio.dart';
+import 'package:amnesia/pages/auth.dart';
 //----------------- authentication -----------------
 //import 'package:local_auth_device_credentials/auth_strings.dart';
 //import 'package:local_auth_device_credentials/error_codes.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Inicio(),
+      home: Auth(),
     );
   }
 }

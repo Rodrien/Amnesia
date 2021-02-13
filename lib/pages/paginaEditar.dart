@@ -18,7 +18,7 @@ class PaginaEditar extends StatefulWidget {
 }
 
 class _PaginaEditarState extends State<PaginaEditar> {
-  String plataformaElegida = "Estrella";
+  String plataformaElegida = "Logo";
   final control0 = TextEditingController();
   final control1 = TextEditingController();
   final control2 = TextEditingController();

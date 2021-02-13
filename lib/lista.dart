@@ -106,6 +106,21 @@ class _ListaState extends State<Lista> {
                                   ClipboardData(
                                       text: snapshot.data[index].password),
                                 );
+                                showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return AlertDialog(
+                                        title: Text(
+                                          "Contraseña copiada al portapapeles",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 20),
+                                        ),
+                                        backgroundColor:
+                                            Color.fromARGB(255, 15, 15, 15),
+                                      );
+                                    });
                               },
                               contentPadding: EdgeInsets.only(
                                   top: 5, bottom: 5, left: 15, right: 15),
