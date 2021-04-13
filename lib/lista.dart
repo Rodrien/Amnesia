@@ -24,12 +24,30 @@ class _ListaState extends State<Lista> {
     super.dispose();
   }
 
+  Color aux = Color.fromARGB(255, 7, 90, 84); //fondo lista
+  Color aux2 = Color.fromARGB(255, 4, 74, 66); //color tarjeta
+
+  //Color aux = Color.fromARGB(255, 4, 74, 66);
+  //Color aux2 = Color.fromARGB(255, 7, 94, 84);
+
   var valores;
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 10),
-      //color: Colors.black,
+      padding: EdgeInsets.only(top: 10, bottom: 5, left: 5, right: 5),
+      margin: EdgeInsets.only(
+        left: 10,
+        right: 10,
+        bottom: 0,
+      ),
+      decoration: BoxDecoration(
+        color: aux,
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+      ),
+      //color: Colors.white,
       child: StreamBuilder<List<Entrada>>(
         stream: lista.lista,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -81,6 +99,8 @@ class _ListaState extends State<Lista> {
                           break;
                         case DismissDirection.down:
                           break;
+                        default:
+                          break;
                       }
                       return false;
                       //return _confirmacionEliminar();
@@ -90,7 +110,7 @@ class _ListaState extends State<Lista> {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(15),
                         child: Material(
-                          color: Colors.black,
+                          color: aux2,
                           elevation: 1,
                           child: InkWell(
                             //enableFeedback: true,
@@ -99,8 +119,14 @@ class _ListaState extends State<Lista> {
                             //highlightColor: Colors.greenAccent,
                             splashColor: Colors.greenAccent,
                             child: ListTile(
-                              tileColor: Color.fromARGB(255, 20, 20, 20),
+                              tileColor: Color.fromARGB(1, 7, 94, 84),
                               key: ObjectKey(snapshot.data[index].id),
+                              onTap: () {
+                                Clipboard.setData(
+                                  ClipboardData(
+                                      text: snapshot.data[index].password),
+                                );
+                              },
                               onLongPress: () {
                                 Clipboard.setData(
                                   ClipboardData(
@@ -118,7 +144,7 @@ class _ListaState extends State<Lista> {
                                               fontSize: 20),
                                         ),
                                         backgroundColor:
-                                            Color.fromARGB(255, 15, 15, 15),
+                                            Color.fromARGB(255, 4, 74, 66),
                                       );
                                     });
                               },
@@ -140,7 +166,7 @@ class _ListaState extends State<Lista> {
                                     TextSpan(
                                       text: "${snapshot.data[index].titulo}",
                                       style: TextStyle(
-                                        color: Colors.greenAccent,
+                                        color: Colors.white,
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
                                       ),
@@ -153,7 +179,10 @@ class _ListaState extends State<Lista> {
                                   children: <TextSpan>[
                                     TextSpan(
                                       text: "${snapshot.data[index].usuario}",
-                                      style: TextStyle(fontSize: 14),
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                     TextSpan(
                                       text: "\n" +
@@ -163,7 +192,9 @@ class _ListaState extends State<Lista> {
                                                   snapshot.data[index].password
                                                       .length),
                                       style: TextStyle(
-                                          fontSize: 14, color: Colors.white54),
+                                        fontSize: 14,
+                                        color: Colors.white,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -213,14 +244,14 @@ class _ListaState extends State<Lista> {
             style: TextStyle(color: Colors.white),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               onPressed: () => Navigator.of(context).pop(false),
               child: Text(
                 "CANCELAR",
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            FlatButton(
+            TextButton(
               onPressed: () => Navigator.of(context).pop(true),
               child: Text(
                 "ELIMINAR",

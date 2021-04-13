@@ -46,8 +46,16 @@ class _InicioState extends State<Inicio> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: Drawer(
+          child: Row(
+            children: [
+              Text("asdsad"),
+            ],
+          ),
+        ),
+        drawerScrimColor: Color.fromRGBO(40, 40, 40, 0.5),
         appBar: AppBar(
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromRGBO(40, 40, 40, 1),
           centerTitle: true,
           title: RichText(
             text: TextSpan(
@@ -92,14 +100,87 @@ class _InicioState extends State<Inicio> {
             )
           ],
           elevation: 0,
-          toolbarHeight: 30,
+          toolbarHeight: 60,
         ),
-        body: Lista(),
-        backgroundColor: Colors.black,
-
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            Container(
+              height: 100,
+              child: ListView(
+                padding: EdgeInsets.all(10),
+                scrollDirection: Axis.horizontal,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(right: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30),
+                        bottomRight: Radius.circular(30),
+                        bottomLeft: Radius.circular(30),
+                      ),
+                    ),
+                    width: 100,
+                    height: 100,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(right: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30),
+                        bottomRight: Radius.circular(30),
+                        bottomLeft: Radius.circular(30),
+                      ),
+                    ),
+                    width: 100,
+                    height: 100,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(right: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30),
+                        bottomRight: Radius.circular(30),
+                        bottomLeft: Radius.circular(30),
+                      ),
+                    ),
+                    width: 100,
+                    height: 100,
+                  ),
+                  Container(
+                    margin: EdgeInsets.only(right: 10),
+                    decoration: BoxDecoration(
+                      color: Colors.purple,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(30),
+                        topRight: Radius.circular(30),
+                        bottomRight: Radius.circular(30),
+                        bottomLeft: Radius.circular(30),
+                      ),
+                    ),
+                    width: 100,
+                    height: 100,
+                  ),
+                ],
+              ),
+            ),
+            Expanded(child: Lista()),
+          ],
+        ),
+        backgroundColor: Color.fromRGBO(40, 40, 40, 1),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.greenAccent,
-          child: Icon(Icons.add_sharp, color: Colors.black),
+          backgroundColor: Color.fromRGBO(40, 40, 40, 1),
+          child: Icon(
+            Icons.add_sharp,
+            color: Colors.white,
+          ),
           onPressed: () {
             pantallaAgregar();
             //setState(() {});

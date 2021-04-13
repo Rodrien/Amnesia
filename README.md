@@ -1,4 +1,5 @@
 # Amnesia Password Manager
+<img src="/assets/icon.png">
 Gestor de contraseñas opensource creado con Flutter. 
 
 ## Funcionalidades 
@@ -31,6 +32,7 @@ Gestor de contraseñas opensource creado con Flutter.
 - Agregar un generador de contraseñas
 - Agregar light theme (un color cremita quizas, con accentos blancos, mas profesional)
 - Agregar encriptacion de las contraseñas (https://pub.dev/packages/encrypt,https://pub.dev/packages/aes_crypt)
+- Exportar/Importar contraseñas
 -->
 
 <!-- 
@@ -39,4 +41,13 @@ COMANDOS UTILES
     flutter pub run flutter_launcher_icons:main
 - Crear el APK
     flutter build apk --split-per-abi (en la raiz del directorio)
+-->
+
+<!-- 
+Colores
+Color aux = Color.fromARGB(255, 7, 90, 84); //fondo lista
+Color aux2 = Color.fromARGB(255, 4, 74, 66); //color tarjeta
+color fondoApp y Barra App Color.fromRGBO(40, 40, 40, 1)
+
+
 -->
