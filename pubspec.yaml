@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
   sqflite:
   path:
+  provider: ^5.0.0
   local_auth_device_credentials: ^0.6.3+10
   flutter_launcher_icons: ^0.8.1
   flutter_spinkit: "^4.1.2"

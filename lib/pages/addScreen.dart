@@ -1,30 +1,24 @@
+import 'package:amnesia/providers/localDatabase.dart';
 import 'package:flutter/material.dart';
-import 'package:amnesia/DatabaseHelper.dart';
 import 'package:amnesia/model/entrada.dart';
-import 'package:amnesia/pages/inicio.dart';
+import 'package:amnesia/pages/start.dart';
+import 'package:provider/provider.dart';
 
-class PaginaEditar extends StatefulWidget {
-  final int idActual;
-  final String platActual;
-  final String titActual;
-  final String usuActual;
-  final String passActual;
-
-  PaginaEditar(this.idActual, this.platActual, this.titActual, this.usuActual,
-      this.passActual);
-
+class PaginaAgregar extends StatefulWidget {
   @override
-  _PaginaEditarState createState() => _PaginaEditarState();
+  _PaginaAgregarState createState() => _PaginaAgregarState();
 }
 
-class _PaginaEditarState extends State<PaginaEditar> {
-  String plataformaElegida = "Logo";
+class _PaginaAgregarState extends State<PaginaAgregar> {
+  String plataformaElegida = 'Logo';
   final control0 = TextEditingController();
   final control1 = TextEditingController();
   final control2 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final dataBase = Provider.of<LocalDatabase>(context);
+
     return Scaffold(
       appBar: AppBar(
           iconTheme: IconThemeData(
@@ -36,7 +30,7 @@ class _PaginaEditarState extends State<PaginaEditar> {
             text: TextSpan(
               children: <TextSpan>[
                 TextSpan(
-                  text: "Actualizar",
+                  text: "Nueva",
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.greenAccent,
@@ -46,7 +40,7 @@ class _PaginaEditarState extends State<PaginaEditar> {
                   ),
                 ),
                 TextSpan(
-                  text: "Entrada",
+                  text: "Cuenta",
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
@@ -64,16 +58,16 @@ class _PaginaEditarState extends State<PaginaEditar> {
         color: Colors.black,
         child: Column(
           children: [
-            tarjeta(widget.titActual, control0),
-            tarjeta(widget.usuActual, control1),
-            tarjeta(widget.passActual, control2),
+            tarjeta("Titulo", control0),
+            tarjeta("Usuario", control1),
+            tarjeta("Contraseña", control2),
             Padding(
               padding: EdgeInsets.only(top: 15),
               child: RichText(
                 text: TextSpan(
                   children: <TextSpan>[
                     TextSpan(
-                      text: "Actualizar",
+                      text: "Seleccione",
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.greenAccent,
@@ -83,7 +77,7 @@ class _PaginaEditarState extends State<PaginaEditar> {
                       ),
                     ),
                     TextSpan(
-                      text: " el logo",
+                      text: " un logo",
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.white,
@@ -101,18 +95,29 @@ class _PaginaEditarState extends State<PaginaEditar> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: Colors.greenAccent,
-          icon: Icon(Icons.save_rounded, color: Colors.black),
-          label: Text(
-            "Actualizar",
-            style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
-          ),
-          onPressed: () {
-            _actualizarEntrada(widget.idActual, control0.text, control1.text,
-                control2.text, plataformaElegida);
-            //setState(() {});
-          }),
+        backgroundColor: Colors.greenAccent,
+        icon: Icon(Icons.save_rounded, color: Colors.black),
+        label: Text(
+          "Guardar",
+          style: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+        onPressed: () {
+          if (control0.text != "" &&
+              control1.text != "" &&
+              control2.text != "") {
+            dataBase.insertEntrada(
+              Entrada(
+                  titulo: control0.text,
+                  usuario: control1.text,
+                  password: control2.text,
+                  plataForma: plataformaElegida,
+                  favorito: 0),
+            );
+          }
+          Navigator.pop(context);
+        },
+      ),
     );
   }
 
@@ -140,7 +145,7 @@ class _PaginaEditarState extends State<PaginaEditar> {
                 color: Colors.white,
               ),
             ),
-            controller: controlador..text = selector,
+            controller: controlador,
             enableInteractiveSelection: true,
             autofocus: false, //(selector == 1 ? true : false),
             textAlign: TextAlign.start,
@@ -213,15 +218,16 @@ class _PaginaEditarState extends State<PaginaEditar> {
     );
   }
 
-  _actualizarEntrada(
-      int idActual, String titu, String usu, String pass, String plat) async {
+  /*_guardarEntrada(String titu, String usu, String pass, String plat) async {
     if (titu != "" && usu != "" && pass != "") {
-      DatabaseHelper.instance.updateEntrada(Entrada(
-          id: idActual,
-          titulo: titu,
-          usuario: usu,
-          password: pass,
-          plataForma: plat));
+      DatabaseHelper.instance.insertEntrada(
+        Entrada(
+            titulo: titu,
+            usuario: usu,
+            password: pass,
+            plataForma: plat,
+            favorito: 0),
+      );
       Navigator.pushAndRemoveUntil(
           //Estudiar esto, nose porque pero funciona ahora, actualiza lo que deberia
           context,
@@ -239,12 +245,12 @@ class _PaginaEditarState extends State<PaginaEditar> {
               style: TextStyle(color: Colors.white),
             ),
             content: Text(
-              "Error al actualizar",
+              "No puede dejar campos vacios.",
               style: TextStyle(color: Colors.white),
             ),
           );
         },
       );
     }
-  }
+  }*/
 }

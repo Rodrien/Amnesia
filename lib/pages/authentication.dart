@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:amnesia/pages/inicio.dart';
+import 'package:amnesia/pages/start.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:local_auth_device_credentials/auth_strings.dart';
 
