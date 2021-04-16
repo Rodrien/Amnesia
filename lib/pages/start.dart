@@ -1,9 +1,11 @@
+import 'package:amnesia/providers/systemInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:amnesia/widgets/SocialRow.dart';
 import 'package:amnesia/lista.dart';
 import 'package:amnesia/pages/addScreen.dart';
 import 'package:amnesia/widgets/CustomDrawer.dart';
 import 'package:amnesia/widgets/CustomAppBar.dart';
+import 'package:provider/provider.dart';
 
 //-------------- Variables --------------
 List<String> genericos = [
@@ -44,10 +46,9 @@ class Inicio extends StatefulWidget {
 }
 
 class _InicioState extends State<Inicio> {
-  static Color colorFondo = Color.fromRGBO(1, 31, 28, 1);
-  //static Color colorFondo2 = Color.fromRGBO(40, 40, 40, 1);
   @override
   Widget build(BuildContext context) {
+    final systemInf = Provider.of<SystemInfo>(context);
     return SafeArea(
       child: Scaffold(
         drawer: CustomDrawer(),
@@ -61,9 +62,9 @@ class _InicioState extends State<Inicio> {
             Expanded(child: Lista()),
           ],
         ),
-        backgroundColor: colorFondo,
+        backgroundColor: systemInf.colorFondoPrincipal,
         floatingActionButton: FloatingActionButton(
-          backgroundColor: colorFondo,
+          backgroundColor: systemInf.colorFondoPrincipal,
           child: Icon(
             Icons.add_sharp,
             color: Colors.white,

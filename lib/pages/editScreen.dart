@@ -1,6 +1,9 @@
+import 'package:amnesia/providers/localDatabase.dart';
+import 'package:amnesia/providers/systemInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:amnesia/model/entrada.dart';
 import 'package:amnesia/pages/start.dart';
+import 'package:provider/provider.dart';
 
 class PaginaEditar extends StatefulWidget {
   final int idActual;
@@ -24,13 +27,16 @@ class _PaginaEditarState extends State<PaginaEditar> {
 
   @override
   Widget build(BuildContext context) {
+    final systemInf = Provider.of<SystemInfo>(context);
+    final systemDb = Provider.of<LocalDatabase>(context);
+
     return Scaffold(
       appBar: AppBar(
           iconTheme: IconThemeData(
             color: Colors.white, //color de la flecha de regreso
           ),
           elevation: 0,
-          backgroundColor: Colors.black,
+          backgroundColor: systemInf.colorFondoPrincipal,
           title: RichText(
             text: TextSpan(
               children: <TextSpan>[
@@ -100,18 +106,46 @@ class _PaginaEditarState extends State<PaginaEditar> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-          backgroundColor: Colors.greenAccent,
-          icon: Icon(Icons.save_rounded, color: Colors.black),
-          label: Text(
-            "Actualizar",
-            style: TextStyle(
-                color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
-          ),
-          onPressed: () {
-            //_actualizarEntrada(widget.idActual, control0.text, control1.text,
-            //    control2.text, plataformaElegida);
-            //setState(() {});
-          }),
+        backgroundColor: Colors.greenAccent,
+        icon: Icon(Icons.save_rounded, color: Colors.black),
+        label: Text(
+          "Actualizar",
+          style: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+        ),
+        onPressed: () {
+          if (control0.text != '' &&
+              control1.text != '' &&
+              control2.text != '') {
+            systemDb.updateEntrada(
+              Entrada(
+                  id: widget.idActual,
+                  titulo: control0.text,
+                  usuario: control1.text,
+                  password: control2.text,
+                  plataForma: plataformaElegida),
+            );
+          } else {
+            return showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  backgroundColor: Color.fromARGB(255, 15, 15, 15),
+                  title: Text(
+                    "Error",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  content: Text(
+                    "Error al actualizar",
+                    style: TextStyle(color: Colors.white),
+                  ),
+                );
+              },
+            );
+          }
+          Navigator.pop(context);
+        },
+      ),
     );
   }
 
@@ -211,39 +245,4 @@ class _PaginaEditarState extends State<PaginaEditar> {
       ),
     );
   }
-
-  /*_actualizarEntrada(
-      int idActual, String titu, String usu, String pass, String plat) async {
-    if (titu != "" && usu != "" && pass != "") {
-      DatabaseHelper.instance.updateEntrada(Entrada(
-          id: idActual,
-          titulo: titu,
-          usuario: usu,
-          password: pass,
-          plataForma: plat));
-      Navigator.pushAndRemoveUntil(
-          //Estudiar esto, nose porque pero funciona ahora, actualiza lo que deberia
-          context,
-          MaterialPageRoute(builder: (BuildContext context) => Inicio()),
-          (Route<dynamic> route) => false);
-    } else {
-      //Muestra mensaje de error
-      return showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            backgroundColor: Color.fromARGB(255, 15, 15, 15),
-            title: Text(
-              "Error",
-              style: TextStyle(color: Colors.white),
-            ),
-            content: Text(
-              "Error al actualizar",
-              style: TextStyle(color: Colors.white),
-            ),
-          );
-        },
-      );
-    }
-  }*/
 }

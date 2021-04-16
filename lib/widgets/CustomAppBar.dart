@@ -4,7 +4,6 @@ import 'package:amnesia/providers/systemInfo.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({Key key}) : super(key: key);
-  static Color colorFondo = Color.fromRGBO(1, 31, 28, 1);
 
   @override
   Size get preferredSize => const Size.fromHeight(50);
@@ -14,7 +13,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     final systemInf = Provider.of<SystemInfo>(context);
 
     return AppBar(
-      backgroundColor: colorFondo,
+      backgroundColor: systemInf.colorFondoPrincipal,
       centerTitle: true,
       title: RichText(
         text: TextSpan(
@@ -23,7 +22,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               text: "Am",
               style: TextStyle(
                 fontSize: 20,
-                color: Colors.greenAccent,
+                color: Color.fromARGB(
+                    255, 230, 221, 59), //Color.fromARGB(255, 37, 211, 102),
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic,
                 letterSpacing: 1,
@@ -48,7 +48,9 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           enableFeedback: false,
           icon: Icon(
             Icons.visibility,
-            color: (systemInf.mostrarPass ? Colors.yellow : Colors.white),
+            color: (systemInf.mostrarPass
+                ? Color.fromARGB(255, 230, 221, 59)
+                : Colors.white),
           ),
           padding: EdgeInsets.only(right: 20),
           onPressed: () {
