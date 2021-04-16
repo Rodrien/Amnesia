@@ -1,13 +1,15 @@
+import 'package:amnesia/providers/systemInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:amnesia/pages/start.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:local_auth_device_credentials/auth_strings.dart';
+import 'package:provider/provider.dart';
 
 //----------------- authentication -----------------
 //import 'package:local_auth_device_credentials/auth_strings.dart';
 //import 'package:local_auth_device_credentials/error_codes.dart';
-import 'package:local_auth_device_credentials/local_auth.dart';
+//import 'package:local_auth_device_credentials/local_auth.dart';
 //----------------- authentication -----------------
 
 /* 
@@ -31,26 +33,29 @@ class Auth extends StatefulWidget {
 }
 
 class _AuthState extends State<Auth> {
-  LocalAuthentication auth = LocalAuthentication();
+  //final LocalAuthentication auth = LocalAuthentication();
 
-  @override
+  /*@override
   void initState() {
     tieneSeguridad().then((tieneSensor) {
       //print(tiene_sensor);
       tieneSensor
-          ? _autenticar().then((entra) {
-              entra
-                  ? Navigator.pushReplacement(context,
-                      MaterialPageRoute(builder: (context) => Inicio()))
-                  : print("No authorizado");
-            }) //SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+          ? _autenticar().then(
+              (entra) {
+                entra
+                    ? Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context) => Inicio()))
+                    : print("No authorizado");
+              },
+            ) //SystemChannels.platform.invokeMethod('SystemNavigator.pop');
           : print("No tiene huella");
       /* Si tiene sensor, autentica al usuario y sino no */
-    });
-  }
+    },);
+  }*/
 
   @override
   Widget build(BuildContext context) {
+    final systemInf = Provider.of<SystemInfo>(context);
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color.fromARGB(255, 20, 20, 20),
@@ -60,7 +65,15 @@ class _AuthState extends State<Auth> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Padding(
+                Container(
+                  height: 200,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage("assets/icon.png"),
+                    ),
+                  ),
+                ),
+                /*Padding(
                   padding: const EdgeInsets.only(bottom: 20),
                   child: Text(
                     "Cargando...",
@@ -76,6 +89,24 @@ class _AuthState extends State<Auth> {
                 SpinKitFadingCube(
                   size: 25,
                   color: Colors.greenAccent,
+                ),*/
+                TextButton(
+                  onPressed: () {
+                    //Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (BuildContext context) {
+                        return Inicio();
+                      }),
+                    );
+                  },
+                  child: Text(
+                    "Entrar",
+                    style: TextStyle(
+                      color: systemInf.colorImportante,
+                      fontSize: 20,
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -85,7 +116,7 @@ class _AuthState extends State<Auth> {
     );
   }
 
-  Future<bool> tieneSeguridad() async {
+  /*Future<bool> tieneSeguridad() async {
     //Para ver si tiene huella o face id
     bool hasBiometric = false;
     try {
@@ -113,5 +144,5 @@ class _AuthState extends State<Auth> {
       print(e);
     }
     return autenticado;
-  }
+  }*/
 }

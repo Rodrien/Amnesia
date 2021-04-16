@@ -22,8 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               text: "Am",
               style: TextStyle(
                 fontSize: 20,
-                color: Color.fromARGB(
-                    255, 230, 221, 59), //Color.fromARGB(255, 37, 211, 102),
+                color: systemInf.colorImportante,
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.italic,
                 letterSpacing: 1,

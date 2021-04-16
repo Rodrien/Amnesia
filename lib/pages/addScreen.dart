@@ -23,6 +23,7 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: systemInf.colorFondoPrincipal,
         appBar: AppBar(
           toolbarHeight: 60,
           centerTitle: true,
@@ -38,7 +39,7 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
                   text: "Nueva",
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.greenAccent,
+                    color: systemInf.colorImportante,
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic,
                     letterSpacing: 1,
@@ -66,15 +67,23 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
                 padding: EdgeInsets.only(top: 0),
                 child: Column(
                   children: [
-                    tarjeta("Titulo", control0, systemInf.colorFondoPrincipal),
-                    tarjeta("Usuario", control1, systemInf.colorFondoPrincipal),
+                    tarjeta("Titulo", control0, systemInf.colorFondoPrincipal,
+                        systemInf.colorCajonPasswords),
+                    tarjeta("Usuario", control1, systemInf.colorFondoPrincipal,
+                        systemInf.colorCajonPasswords),
                     tarjeta(
-                        "Contraseña", control2, systemInf.colorFondoPrincipal),
+                        "Contraseña",
+                        control2,
+                        systemInf.colorFondoPrincipal,
+                        systemInf.colorCajonPasswords),
                   ],
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 15),
+                padding: EdgeInsets.only(
+                  top: 10,
+                  bottom: 20,
+                ),
                 child: RichText(
                   text: TextSpan(
                     children: <TextSpan>[
@@ -82,7 +91,7 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
                         text: "Seleccione",
                         style: TextStyle(
                           fontSize: 20,
-                          color: Colors.greenAccent,
+                          color: systemInf.colorImportante,
                           fontWeight: FontWeight.bold,
                           fontStyle: FontStyle.italic,
                           letterSpacing: 1,
@@ -102,18 +111,16 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
                   ),
                 ),
               ),
-              selectorPlataformas(systemInf.colorCajonPasswords),
+              selectorPlataformas(
+                systemInf.colorCajonPasswords,
+                systemInf.colorImportante,
+              ),
             ],
           ),
         ),
         floatingActionButton: FloatingActionButton(
           backgroundColor: systemInf.colorFondoPrincipal,
           child: Icon(Icons.save_rounded, color: Colors.white),
-          /*label: Text(
-            "Guardar",
-            style: TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
-          ),*/
           onPressed: () {
             if (control0.text != "" &&
                 control1.text != "" &&
@@ -126,6 +133,12 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
                     plataForma: plataformaElegida,
                     favorito: 0),
               );
+              final snackBar = SnackBar(
+                content: Text('Contraseña guardada con exito'),
+                backgroundColor: systemInf.colorFondoPrincipal,
+                duration: Duration(seconds: 3),
+              );
+              ScaffoldMessenger.of(context).showSnackBar(snackBar);
             }
             Navigator.pop(context);
           },
@@ -134,8 +147,8 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
     );
   }
 
-  Widget tarjeta(
-      String selector, TextEditingController controlador, Color col1) {
+  Widget tarjeta(String selector, TextEditingController controlador, Color col1,
+      Color col2) {
     return Container(
       color: col1,
       padding: EdgeInsets.only(left: 20, top: 20, right: 20, bottom: 20),
@@ -146,12 +159,12 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
             decoration: InputDecoration(
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Colors.greenAccent,
+                  color: col2,
                 ),
               ),
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
-                  color: Colors.greenAccent,
+                  color: col2,
                 ),
               ),
               hintText: (selector),
@@ -175,16 +188,26 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
     );
   }
 
-  Widget selectorPlataformas(Color fondo) {
+  Widget selectorPlataformas(Color fondo, Color eleccion) {
     //un grid con los logos de cada plataforma
     return Expanded(
       child: Container(
-        margin: EdgeInsets.all(5),
+        margin: EdgeInsets.only(
+          left: 10,
+          right: 10,
+          bottom: 0,
+        ),
+        decoration: BoxDecoration(
+          color: fondo,
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
+          ),
+        ),
 
         ///left right, poner las puntas curvas como inicio
-        color: fondo,
         child: GridView.builder(
-          padding: EdgeInsets.only(left: 20, top: 40, bottom: 20, right: 20),
+          padding: EdgeInsets.only(left: 20, top: 20, bottom: 30, right: 20),
           itemCount: plataFormas.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 5, crossAxisSpacing: 15, mainAxisSpacing: 15),
@@ -195,10 +218,7 @@ class _PaginaAgregarState extends State<PaginaAgregar> {
                   //padding: EdgeInsets.all(0),
                   decoration: BoxDecoration(
                     boxShadow: <BoxShadow>[
-                      BoxShadow(
-                          color: Colors.greenAccent,
-                          spreadRadius: 5,
-                          blurRadius: 7)
+                      BoxShadow(color: eleccion, spreadRadius: 5, blurRadius: 7)
                     ],
                     borderRadius: BorderRadius.circular(60),
                     image: DecorationImage(

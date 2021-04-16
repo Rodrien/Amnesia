@@ -72,4 +72,12 @@ class LocalDatabase with ChangeNotifier {
         conflictAlgorithm: ConflictAlgorithm.replace);
     notifyListeners();
   }
+
+  Future<void> favEntrada(int id, int fav) async {
+    final db = await database;
+
+    await db.execute("UPDATE entradas SET favorito = $fav WHERE id = $id");
+
+    notifyListeners();
+  }
 }

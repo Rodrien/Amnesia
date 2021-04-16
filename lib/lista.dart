@@ -49,14 +49,14 @@ class _ListaState extends State<Lista> {
                         padding: EdgeInsets.only(left: 20, right: 20),
                         child: Icon(
                           Icons.delete,
-                          color: Colors.redAccent,
+                          color: Colors.red,
                         ),
                         alignment: AlignmentDirectional.centerStart,
                       ),
                       secondaryBackground: Container(
                         padding: EdgeInsets.only(left: 20, right: 20),
                         child: Icon(Icons.update_outlined,
-                            color: Colors.greenAccent),
+                            color: systemInf.colorImportante),
                         alignment: AlignmentDirectional.centerEnd,
                       ),
                       onDismissed: (directon) {
@@ -66,7 +66,9 @@ class _ListaState extends State<Lista> {
                       confirmDismiss: (DismissDirection direction) async {
                         switch (direction) {
                           case DismissDirection.startToEnd:
-                            return _confirmacionEliminar();
+                            return _confirmacionEliminar(
+                                systemInf.colorFondoPrincipal,
+                                systemInf.colorImportante);
                           case DismissDirection.endToStart:
                             //Aca actualizar la entrada
                             return pantallaEditar(
@@ -106,17 +108,14 @@ class _ListaState extends State<Lista> {
     );
   }
 
-  /*void _eliminarEntrada(dynamic entrada) {
-    DatabaseHelper.instance.deleteEntrada(entrada.id);
-    //Navigator.pop(context);
-  }*/
-
-  Future<bool> _confirmacionEliminar() async {
+  Future<bool> _confirmacionEliminar(Color fondo, Color importante) async {
     return await showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: Color.fromARGB(255, 15, 15, 15),
+          backgroundColor: fondo,
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           title: Text(
             "Confirmar",
             style: TextStyle(color: Colors.white),
@@ -130,16 +129,21 @@ class _ListaState extends State<Lista> {
               onPressed: () => Navigator.of(context).pop(false),
               child: Text(
                 "CANCELAR",
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
             ),
             TextButton(
+              style: ButtonStyle(),
               onPressed: () {
                 Navigator.of(context).pop(true);
               }, //=> Navigator.of(context).pop(true),
               child: Text(
                 "ELIMINAR",
-                style: TextStyle(color: Colors.redAccent),
+                style: TextStyle(
+                  color: importante,
+                ),
               ),
             ),
           ],

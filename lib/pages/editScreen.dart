@@ -30,8 +30,11 @@ class _PaginaEditarState extends State<PaginaEditar> {
     final systemInf = Provider.of<SystemInfo>(context);
     final systemDb = Provider.of<LocalDatabase>(context);
 
-    return Scaffold(
-      appBar: AppBar(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: systemInf.colorFondoPrincipal,
+        appBar: AppBar(
+          toolbarHeight: 60,
           iconTheme: IconThemeData(
             color: Colors.white, //color de la flecha de regreso
           ),
@@ -44,7 +47,7 @@ class _PaginaEditarState extends State<PaginaEditar> {
                   text: "Actualizar",
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.greenAccent,
+                    color: systemInf.colorImportante,
                     fontWeight: FontWeight.bold,
                     fontStyle: FontStyle.italic,
                     letterSpacing: 1,
@@ -64,94 +67,100 @@ class _PaginaEditarState extends State<PaginaEditar> {
             ),
           ),
           centerTitle: true,
-          toolbarHeight: 30),
-      body: Container(
-        color: Colors.black,
-        child: Column(
-          children: [
-            selectorPlataformas(),
-            Padding(
-              padding: EdgeInsets.only(top: 15),
-              child: RichText(
-                text: TextSpan(
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: "Actualizar",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.greenAccent,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 1,
+        ),
+        body: Container(
+          color: systemInf.colorFondoPrincipal,
+          child: Column(
+            children: [
+              selectorPlataformas(
+                systemInf.colorCajonPasswords,
+                systemInf.colorImportante,
+              ),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 20,
+                  bottom: 10,
+                ),
+                child: RichText(
+                  text: TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: "Actualizar",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: systemInf.colorImportante,
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic,
+                          letterSpacing: 1,
+                        ),
                       ),
-                    ),
-                    TextSpan(
-                      text: " entrada",
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 1,
-                      ),
-                    )
-                  ],
+                      TextSpan(
+                        text: " entrada",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.italic,
+                          letterSpacing: 1,
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-            tarjeta(widget.titActual, control0),
-            tarjeta(widget.usuActual, control1),
-            tarjeta(widget.passActual, control2),
-          ],
+              tarjeta(widget.titActual, control0, systemInf.colorFondoPrincipal,
+                  systemInf.colorCajonPasswords),
+              tarjeta(widget.usuActual, control1, systemInf.colorFondoPrincipal,
+                  systemInf.colorCajonPasswords),
+              tarjeta(widget.passActual, control2,
+                  systemInf.colorFondoPrincipal, systemInf.colorCajonPasswords),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: Colors.greenAccent,
-        icon: Icon(Icons.save_rounded, color: Colors.black),
-        label: Text(
-          "Actualizar",
-          style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: systemInf.colorCajonPasswords,
+          child: Icon(Icons.save_rounded, color: Colors.white),
+          onPressed: () {
+            if (control0.text != '' &&
+                control1.text != '' &&
+                control2.text != '') {
+              systemDb.updateEntrada(
+                Entrada(
+                    id: widget.idActual,
+                    titulo: control0.text,
+                    usuario: control1.text,
+                    password: control2.text,
+                    plataForma: plataformaElegida),
+              );
+            } else {
+              return showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return AlertDialog(
+                    backgroundColor: Color.fromARGB(255, 15, 15, 15),
+                    title: Text(
+                      "Error",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    content: Text(
+                      "Error al actualizar",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  );
+                },
+              );
+            }
+            Navigator.pop(context);
+          },
         ),
-        onPressed: () {
-          if (control0.text != '' &&
-              control1.text != '' &&
-              control2.text != '') {
-            systemDb.updateEntrada(
-              Entrada(
-                  id: widget.idActual,
-                  titulo: control0.text,
-                  usuario: control1.text,
-                  password: control2.text,
-                  plataForma: plataformaElegida),
-            );
-          } else {
-            return showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  backgroundColor: Color.fromARGB(255, 15, 15, 15),
-                  title: Text(
-                    "Error",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  content: Text(
-                    "Error al actualizar",
-                    style: TextStyle(color: Colors.white),
-                  ),
-                );
-              },
-            );
-          }
-          Navigator.pop(context);
-        },
       ),
     );
   }
 
-  Widget tarjeta(String selector, TextEditingController controlador) {
+  Widget tarjeta(String selector, TextEditingController controlador, Color col1,
+      Color col2) {
     return Container(
-      color: Colors.black,
+      color: col1,
       padding: EdgeInsets.only(left: 20, top: 20, right: 20, bottom: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,12 +169,12 @@ class _PaginaEditarState extends State<PaginaEditar> {
             decoration: InputDecoration(
               focusedBorder: OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Colors.greenAccent,
+                  color: Colors.black12,
                 ),
               ),
               enabledBorder: UnderlineInputBorder(
                 borderSide: BorderSide(
-                  color: Colors.greenAccent,
+                  color: col2,
                 ),
               ),
               hintText: (selector),
@@ -189,59 +198,74 @@ class _PaginaEditarState extends State<PaginaEditar> {
     );
   }
 
-  Widget selectorPlataformas() {
+  Widget selectorPlataformas(Color fondo, Color eleccion) {
     //un grid con los logos de cada plataforma
     return Expanded(
-      child: GridView.builder(
-        padding: EdgeInsets.only(left: 20, top: 40, bottom: 20, right: 20),
-        itemCount: plataFormas.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 5, crossAxisSpacing: 15, mainAxisSpacing: 15),
-        itemBuilder: (context, index) {
-          if (plataformaElegida == plataFormas[index]) {
-            return InkWell(
-              child: Container(
-                //padding: EdgeInsets.all(0),
-                decoration: BoxDecoration(
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                        color: Colors.greenAccent,
+      child: Container(
+        margin: EdgeInsets.only(
+          left: 10,
+          right: 10,
+          bottom: 0,
+        ),
+        decoration: BoxDecoration(
+          color: fondo,
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(30),
+            bottomRight: Radius.circular(30),
+          ),
+        ),
+        child: GridView.builder(
+          padding: EdgeInsets.only(left: 20, top: 15, bottom: 15, right: 20),
+          itemCount: plataFormas.length,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 5, crossAxisSpacing: 15, mainAxisSpacing: 15),
+          itemBuilder: (context, index) {
+            if (plataformaElegida == plataFormas[index]) {
+              return InkWell(
+                child: Container(
+                  //padding: EdgeInsets.all(0),
+                  decoration: BoxDecoration(
+                    boxShadow: <BoxShadow>[
+                      BoxShadow(
+                        color: eleccion,
                         spreadRadius: 5,
-                        blurRadius: 7)
-                  ],
-                  borderRadius: BorderRadius.circular(60),
-                  image: DecorationImage(
-                    image: AssetImage(
-                        'assets/images/${plataFormas[index]}_icon.png'),
-                    fit: BoxFit.fill,
+                        blurRadius: 7,
+                      )
+                    ],
+                    borderRadius: BorderRadius.circular(60),
+                    image: DecorationImage(
+                      image: AssetImage(
+                          'assets/images/${plataFormas[index]}_icon.png'),
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
-              ),
-              onTap: () {
-                plataformaElegida = plataFormas[index];
-                //print(plataformaElegida);
-                setState(() {});
-              },
-            );
-          } else {
-            return InkWell(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(60),
-                  image: DecorationImage(
-                    image: AssetImage(
-                        'assets/images/${plataFormas[index]}_icon.png'),
-                    fit: BoxFit.fill,
+                onTap: () {
+                  plataformaElegida = plataFormas[index];
+                  //print(plataformaElegida);
+                  setState(() {});
+                },
+              );
+            } else {
+              return InkWell(
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(60),
+                    image: DecorationImage(
+                      image: AssetImage(
+                          'assets/images/${plataFormas[index]}_icon.png'),
+                      fit: BoxFit.fill,
+                    ),
                   ),
                 ),
-              ),
-              onTap: () {
-                plataformaElegida = plataFormas[index];
-                setState(() {});
-              },
-            );
-          }
-        },
+                onTap: () {
+                  plataformaElegida = plataFormas[index];
+                  setState(() {});
+                },
+              );
+            }
+          },
+        ),
       ),
     );
   }

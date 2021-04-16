@@ -1,3 +1,4 @@
+import 'package:amnesia/pages/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Inicio(),
+      home: Auth(),
     );
   }
 }
