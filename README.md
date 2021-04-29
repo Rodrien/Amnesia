@@ -3,23 +3,24 @@
 Gestor de contraseñas opensource creado con Flutter. 
 
 ## Funcionalidades 
-[x] Facildiad de uso
-[x] Almacenamiento local
+[X] Facildiad de uso
+[X] Almacenamiento local
 [ ] Generador de contraseñas
 [ ] Tema claro
-[x] Tema oscuro
-[x] Autenticacion con contraseña maestra
+[X] Tema oscuro
+[X] Autenticacion con contraseña maestra
 [ ] Autenticacion con huella 
 [ ] Encriptacion de contraseñas 
 [ ] Exportar/Importar contraseñas
 
 
 ## Snapshots
-<img src="/Snapshots/Ejemplo14.png">
-<img src="/Snapshots/Ejemplo15.png">
-<img src="/Snapshots/Ejemplo16.png">
-<img src="/Snapshots/Ejemplo17.png">
-<img src="/Snapshots/Ejemplo18.png">
+<img src="/Snapshots/Ejemplo19.png">
+<img src="/Snapshots/Ejemplo20.png">
+<img src="/Snapshots/Ejemplo21.png">
+<img src="/Snapshots/Ejemplo22.png">
+<img src="/Snapshots/Ejemplo23.png">
+
 
 
 ## Como utilizar
@@ -33,7 +34,7 @@ Gestor de contraseñas opensource creado con Flutter.
 ## A actualizar/agregar/cambiar
 - Agregar encriptacion de las contraseñas (https://pub.dev/packages/encrypt,https://pub.dev/packages/aes_crypt)
 
-user preferences? PAra guardar cosas de theme y eso
+user preferences para guardar cosas de theme:
 https://medium.com/flutter-community/shared-preferences-how-to-save-flutter-application-settings-and-user-preferences-for-later-554d08671ae9
 agrregar iconos de:
 - github
