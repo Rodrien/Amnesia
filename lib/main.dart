@@ -2,10 +2,11 @@ import 'package:amnesia/pages/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:amnesia/pages/start.dart';
+import 'package:amnesia/pages/mainScreen.dart';
 import 'package:amnesia/providers/systemInfo.dart';
 import 'package:amnesia/providers/localDatabase.dart';
 //import 'package:amnesia/pages/auth.dart';
+import 'package:amnesia/pages/welcome.dart';
 
 void main() {
   runApp(
@@ -37,7 +38,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Auth(),
+      home: Welcome(), //SelectFirstPage();
     );
   }
+}
+
+Widget SelectFirstPage() {
+  return Container();
 }

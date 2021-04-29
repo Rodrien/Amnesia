@@ -2,7 +2,7 @@ import 'package:amnesia/providers/localDatabase.dart';
 import 'package:amnesia/providers/systemInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:amnesia/model/entrada.dart';
-import 'package:amnesia/pages/start.dart';
+import 'package:amnesia/pages/mainScreen.dart';
 import 'package:provider/provider.dart';
 
 class PaginaAgregar extends StatefulWidget {

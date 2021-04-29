@@ -17,7 +17,6 @@ Gestor de contraseñas opensource creado con Flutter.
 
 
 ## Como utilizar
-- Ingresar a la app utilizando su huella (o pin, patron)
 - Para agregar entradas es bastante directo, al darle al + se abre la pagina para escribir los datos y elegir el logo.
 - Para eliminar una entrada es tan facil como hacerle "swipe" hacia la derecha a la entrada que desea eliminar.
 - Para actualizar una entrada es tan facil como hacerle "swipe" hacia la izquierda a la entrada que desea actualizar y luego cambiar los datos de la misma.
@@ -26,14 +25,15 @@ Gestor de contraseñas opensource creado con Flutter.
 
 <!-- 
 ## A actualizar/agregar/cambiar
-- Agregar favoritos (bool en base de datos posiblemente) <-- ya se agrego como un integer, cuando vale 1 es que es fav
-    Para cargar la lista con los favs primero utilizar instrucciones SQL (WHERE favorito = 1)
+- Crear pagina de primer inicio, con opciones para setear la contrase;a maestra.
 - Agregar un generador de contraseñas
 - Agregar light theme (un color cremita quizas, con accentos blancos, mas profesional)
 - Agregar encriptacion de las contraseñas (https://pub.dev/packages/encrypt,https://pub.dev/packages/aes_crypt)
 - Exportar/Importar contraseñas
+- Inspiracion : https://github.com/mtwn105/Cipherly
 
-user preferences? PAra guardar cosas de theme y eso? O nada que ver?
+user preferences? PAra guardar cosas de theme y eso
+https://medium.com/flutter-community/shared-preferences-how-to-save-flutter-application-settings-and-user-preferences-for-later-554d08671ae9
 agrregar iconos de:
 - github
 -->

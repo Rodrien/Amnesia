@@ -7,11 +7,12 @@ import 'package:amnesia/model/entrada.dart';
 class LocalDatabase with ChangeNotifier {
   LocalDatabase();
 
-  static const databaseName = "entradas_database.db";
+  static const databaseName = "amnesia_database.db";
   //static final LocalDatabase instance = LocalDatabase._();
   static Database _database;
 
   Future<Database> get database async {
+    //singleton
     if (_database == null) {
       return await initializeDatabase();
     }
@@ -25,8 +26,58 @@ class LocalDatabase with ChangeNotifier {
       onCreate: (Database db, int version) async {
         await db.execute(
             "CREATE TABLE entradas(id INTEGER PRIMARY KEY AUTOINCREMENT, titulo TEXT, user TEXT, password TEXT,plataForma TEXT, favorito INTEGER)");
+        await db.execute(
+            "CREATE TABLE systemInfo(id INTEGER PRIMARY KEY, name TEXT,value TEXT)");
+        await db
+            .execute("INSERT INTO systemInfo VALUES (1,'firstBoot','True')");
       },
     );
+  }
+
+  Future<String> retrieveFirstBoot() async {
+    final db = await database;
+
+    final List<Map<String, dynamic>> maps = await db.query("systemInfo");
+
+    return maps[1]["value"];
+  }
+
+  Future<void> updateFirstBoot() async {
+    final db = await database;
+
+    var map = Map<String, dynamic>();
+    map['id'] = 1;
+    map['value'] = "False";
+
+    await db.insert("systemInfo", map, //insertamos en la tabla "masterPassword"
+        conflictAlgorithm: ConflictAlgorithm.replace);
+    notifyListeners();
+
+    await db.update("systemInfo", map,
+        where: "id = ?",
+        whereArgs: [1],
+        conflictAlgorithm: ConflictAlgorithm.replace);
+    notifyListeners();
+  }
+
+  Future<String> retrieveMasterPassword() async {
+    final db = await database;
+
+    final List<Map<String, dynamic>> maps = await db.query("systemInfo");
+
+    return maps[0]["value"];
+  }
+
+  Future<void> insertMasterPassword(String pass) async {
+    final db = await database;
+
+    var map = Map<String, dynamic>();
+    map['id'] = 0;
+    map['value'] = pass;
+
+    await db.insert("systemInfo", map, //insertamos en la tabla "masterPassword"
+        conflictAlgorithm: ConflictAlgorithm.replace);
+    notifyListeners();
   }
 
   Future<List<Entrada>> retrieveEntradas() async {
