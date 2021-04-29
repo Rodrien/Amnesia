@@ -25,7 +25,7 @@ class Welcome extends StatelessWidget {
                   backgroundColor: Colors.transparent,
                 ),
                 Text(
-                  "Bienvenidos a Amnesia!",
+                  "¡Bienvenidos a Amnesia!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.white,

@@ -3,10 +3,16 @@
 Gestor de contraseñas opensource creado con Flutter. 
 
 ## Funcionalidades 
-- Facildiad de uso
-- Almacenamiento local
-- Protegido con su huella (pin o patron tambien)
-- Encriptacion de contraseñas (proximamente)
+[x] Facildiad de uso
+[x] Almacenamiento local
+[ ] Generador de contraseñas
+[ ] Tema claro
+[x] Tema oscuro
+[x] Autenticacion con contraseña maestra
+[ ] Autenticacion con huella 
+[ ] Encriptacion de contraseñas 
+[ ] Exportar/Importar contraseñas
+
 
 ## Snapshots
 <img src="/Snapshots/Ejemplo14.png">
@@ -25,12 +31,7 @@ Gestor de contraseñas opensource creado con Flutter.
 
 <!-- 
 ## A actualizar/agregar/cambiar
-- Crear pagina de primer inicio, con opciones para setear la contrase;a maestra.
-- Agregar un generador de contraseñas
-- Agregar light theme (un color cremita quizas, con accentos blancos, mas profesional)
 - Agregar encriptacion de las contraseñas (https://pub.dev/packages/encrypt,https://pub.dev/packages/aes_crypt)
-- Exportar/Importar contraseñas
-- Inspiracion : https://github.com/mtwn105/Cipherly
 
 user preferences? PAra guardar cosas de theme y eso
 https://medium.com/flutter-community/shared-preferences-how-to-save-flutter-application-settings-and-user-preferences-for-later-554d08671ae9

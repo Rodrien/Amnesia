@@ -1,11 +1,8 @@
 import 'package:amnesia/pages/authentication.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'package:amnesia/pages/mainScreen.dart';
 import 'package:amnesia/providers/systemInfo.dart';
 import 'package:amnesia/providers/localDatabase.dart';
-//import 'package:amnesia/pages/auth.dart';
 import 'package:amnesia/pages/welcome.dart';
 
 void main() {
@@ -29,8 +26,9 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final dataBase = Provider.of<LocalDatabase>(context);
     return MaterialApp(
-      debugShowCheckedModeBanner: true, //poner en false para produccion
+      debugShowCheckedModeBanner: false,
       title: 'Amnesia',
       theme: ThemeData(
         primaryIconTheme: IconThemeData(color: Colors.white),
@@ -38,11 +36,23 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Welcome(), //SelectFirstPage();
+      home: FutureBuilder(
+        future: dataBase.retrieveFirstBoot(),
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            //print(snapshot.data.toString());
+            if (snapshot.data.toString() == "True") {
+              return Welcome();
+            } else {
+              return Auth();
+            }
+          } else if (snapshot.hasError) {
+            return Text("Error");
+          } else {
+            return Center(child: CircularProgressIndicator());
+          }
+        },
+      ),
     );
   }
-}
-
-Widget SelectFirstPage() {
-  return Container();
 }

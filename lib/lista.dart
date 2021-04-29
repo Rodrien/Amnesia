@@ -76,7 +76,8 @@ class _ListaState extends State<Lista> {
                                 snapshot.data[index].plataForma,
                                 snapshot.data[index].titulo,
                                 snapshot.data[index].usuario,
-                                snapshot.data[index].password);
+                                snapshot.data[index].password,
+                                snapshot.data[index].favorito);
                           case DismissDirection.horizontal:
                             break;
                           case DismissDirection.vertical:
@@ -158,14 +159,16 @@ class _ListaState extends State<Lista> {
     String tit,
     String usu,
     String pass,
+    int fav,
   ) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (BuildContext context) {
-          return PaginaEditar(id, plat, tit, usu, pass);
+          return PaginaEditar(id, plat, tit, usu, pass, fav);
         },
       ),
     );
+    return null;
   }
 }

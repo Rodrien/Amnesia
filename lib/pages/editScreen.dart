@@ -11,19 +11,26 @@ class PaginaEditar extends StatefulWidget {
   final String titActual;
   final String usuActual;
   final String passActual;
+  final int favActual;
 
   PaginaEditar(this.idActual, this.platActual, this.titActual, this.usuActual,
-      this.passActual);
+      this.passActual, this.favActual);
 
   @override
   _PaginaEditarState createState() => _PaginaEditarState();
 }
 
 class _PaginaEditarState extends State<PaginaEditar> {
-  String plataformaElegida = "Logo";
+  String plataformaElegida;
   final control0 = TextEditingController();
   final control1 = TextEditingController();
   final control2 = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    plataformaElegida = widget.platActual;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -130,7 +137,8 @@ class _PaginaEditarState extends State<PaginaEditar> {
                     titulo: control0.text,
                     usuario: control1.text,
                     password: control2.text,
-                    plataForma: plataformaElegida),
+                    plataForma: plataformaElegida,
+                    favorito: widget.favActual),
               );
             } else {
               return showDialog(

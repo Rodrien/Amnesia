@@ -29,7 +29,7 @@ class LocalDatabase with ChangeNotifier {
         await db.execute(
             "CREATE TABLE systemInfo(id INTEGER PRIMARY KEY, name TEXT,value TEXT)");
         await db
-            .execute("INSERT INTO systemInfo VALUES (1,'firstBoot','True')");
+            .execute("INSERT INTO systemInfo VALUES (0,'firstBoot','True')");
       },
     );
   }
@@ -37,42 +37,50 @@ class LocalDatabase with ChangeNotifier {
   Future<String> retrieveFirstBoot() async {
     final db = await database;
 
-    final List<Map<String, dynamic>> maps = await db.query("systemInfo");
-
-    return maps[1]["value"];
+    var dbQuery = await db
+        .rawQuery('SELECT value FROM systemInfo WHERE name=?', ['firstBoot']);
+    if (dbQuery.length > 0) {
+      String ret = dbQuery.first.values.first.toString();
+      return ret;
+    } else {
+      return "False";
+    }
   }
 
   Future<void> updateFirstBoot() async {
     final db = await database;
 
     var map = Map<String, dynamic>();
-    map['id'] = 1;
+    map['id'] = 0;
     map['value'] = "False";
-
-    await db.insert("systemInfo", map, //insertamos en la tabla "masterPassword"
-        conflictAlgorithm: ConflictAlgorithm.replace);
-    notifyListeners();
 
     await db.update("systemInfo", map,
         where: "id = ?",
-        whereArgs: [1],
+        whereArgs: [0],
         conflictAlgorithm: ConflictAlgorithm.replace);
     notifyListeners();
   }
 
   Future<String> retrieveMasterPassword() async {
+    //redo like boot method
     final db = await database;
 
-    final List<Map<String, dynamic>> maps = await db.query("systemInfo");
-
-    return maps[0]["value"];
+    var dbQuery =
+        await db.rawQuery('SELECT value FROM systemInfo WHERE id=?', [1]);
+    if (dbQuery.length > 0) {
+      String ret = dbQuery.first.values.first.toString();
+      return ret;
+    } else {
+      return "Error";
+    }
   }
 
   Future<void> insertMasterPassword(String pass) async {
     final db = await database;
 
     var map = Map<String, dynamic>();
-    map['id'] = 0;
+    map['id'] = 1;
+    map['name'] = 'masterPassword';
     map['value'] = pass;
 
     await db.insert("systemInfo", map, //insertamos en la tabla "masterPassword"
