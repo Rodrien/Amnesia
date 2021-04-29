@@ -3,23 +3,23 @@
 Gestor de contraseñas opensource creado con Flutter. 
 
 ## Funcionalidades 
-[X] Facildiad de uso
-[X] Almacenamiento local
-[ ] Generador de contraseñas
-[ ] Tema claro
-[X] Tema oscuro
-[X] Autenticacion con contraseña maestra
-[ ] Autenticacion con huella 
-[ ] Encriptacion de contraseñas 
-[ ] Exportar/Importar contraseñas
+- [x] Facildiad de uso
+- [x] Almacenamiento local
+- [x] Generador de contraseñas
+- [x] Tema claro
+- [x] Tema oscuro
+- [x] Autenticacion con contraseña maestra
+- [x] Autenticacion con huella 
+- [x] Encriptacion de contraseñas 
+- [x] Exportar/Importar contraseñas
 
 
 ## Snapshots
-<img src="/Snapshots/Ejemplo19.png">
-<img src="/Snapshots/Ejemplo20.png">
-<img src="/Snapshots/Ejemplo21.png">
-<img src="/Snapshots/Ejemplo22.png">
-<img src="/Snapshots/Ejemplo23.png">
+<img src="/Snapshots/Ejemplo19.jpeg">
+<img src="/Snapshots/Ejemplo20.jpeg">
+<img src="/Snapshots/Ejemplo21.jpeg">
+<img src="/Snapshots/Ejemplo22.jpeg">
+<img src="/Snapshots/Ejemplo23.jpeg">
 
 
 
