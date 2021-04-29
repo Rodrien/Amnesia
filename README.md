@@ -5,22 +5,21 @@ Gestor de contraseñas opensource creado con Flutter.
 ## Funcionalidades 
 - [x] Facildiad de uso
 - [x] Almacenamiento local
-- [x] Generador de contraseñas
-- [x] Tema claro
-- [x] Tema oscuro
+- [ ] Generador de contraseñas
+- [ ] Tema claro
+- [ ] Tema oscuro
 - [x] Autenticacion con contraseña maestra
-- [x] Autenticacion con huella 
-- [x] Encriptacion de contraseñas 
-- [x] Exportar/Importar contraseñas
+- [ ] Autenticacion con huella 
+- [ ] Encriptacion de contraseñas 
+- [ ] Exportar/Importar contraseñas
 
 
 ## Snapshots
-<img src="/Snapshots/Ejemplo19.jpeg" style="width:200px;">
-<img src="/Snapshots/Ejemplo20.jpeg" style="width:200px;">
-<img src="/Snapshots/Ejemplo21.jpeg" style="width:200px;">
-<img src="/Snapshots/Ejemplo22.jpeg" style="width:200px;">
-<img src="/Snapshots/Ejemplo23.jpeg" style="width:200px;">
-
+<img src="/Snapshots/Ejemplo19.jpeg" height= "200">
+<img src="/Snapshots/Ejemplo20.jpeg" height= "200">
+<img src="/Snapshots/Ejemplo21.jpeg" height= "200">
+<img src="/Snapshots/Ejemplo22.jpeg" height= "200">
+<img src="/Snapshots/Ejemplo23.jpeg" height= "200">
 
 
 ## Como utilizar
@@ -28,7 +27,7 @@ Gestor de contraseñas opensource creado con Flutter.
 - Para eliminar una entrada es tan facil como hacerle "swipe" hacia la derecha a la entrada que desea eliminar.
 - Para actualizar una entrada es tan facil como hacerle "swipe" hacia la izquierda a la entrada que desea actualizar y luego cambiar los datos de la misma.
 - Al tocar el ojo de arriba se muestran todas las contraseñas.
-- Al aguantar una de las tarjetas, la contraseña de la misma se nos copia automaticamente al portapapeles para luego pegarla en la pagina de la misma o donde nosotros querramos, sin la necesidad de ver la contraseña en si.
+- Al tocar una de las tarjetas, la contraseña de la misma se nos copia automaticamente al portapapeles para luego pegarla en la pagina de la misma o donde nosotros querramos, sin la necesidad de ver la contraseña en si.
 
 <!-- 
 ## A actualizar/agregar/cambiar
