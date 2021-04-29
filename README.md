@@ -15,11 +15,11 @@ Gestor de contraseñas opensource creado con Flutter.
 
 
 ## Snapshots
-<img src="/Snapshots/Ejemplo19.jpeg">
-<img src="/Snapshots/Ejemplo20.jpeg">
-<img src="/Snapshots/Ejemplo21.jpeg">
-<img src="/Snapshots/Ejemplo22.jpeg">
-<img src="/Snapshots/Ejemplo23.jpeg">
+<img src="/Snapshots/Ejemplo19.jpeg" style="width:200px;">
+<img src="/Snapshots/Ejemplo20.jpeg" style="width:200px;">
+<img src="/Snapshots/Ejemplo21.jpeg" style="width:200px;">
+<img src="/Snapshots/Ejemplo22.jpeg" style="width:200px;">
+<img src="/Snapshots/Ejemplo23.jpeg" style="width:200px;">
 
 
 
