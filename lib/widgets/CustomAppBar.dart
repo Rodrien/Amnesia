@@ -48,7 +48,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           icon: Icon(
             Icons.visibility,
             color: (systemInf.mostrarPass
-                ? Color.fromARGB(255, 230, 221, 59)
+                ? systemInf.colorImportante
                 : Colors.white),
           ),
           padding: EdgeInsets.only(right: 20),

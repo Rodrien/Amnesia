@@ -9,7 +9,8 @@ class SystemInfo with ChangeNotifier {
   Color _colorCajonPasswords = Color.fromARGB(255, 7, 90, 84);
   Color _colorFondoPasswords = Color.fromARGB(255, 4, 74, 66); //color tarjeta
 
-  Color _colorImportante = Color.fromARGB(255, 230, 221, 59);
+  Color _colorImportante = Color.fromARGB(
+      255, 99, 242, 232); //Color.fromARGB(255, 230, 221, 59); //yellow
 
   //------ THEME ------
 

@@ -29,6 +29,7 @@ dependencies:
   local_auth_device_credentials: ^0.6.3+10
   flutter_launcher_icons: ^0.8.1
   flutter_spinkit: "^4.1.2"
+  url_launcher:
   #bloc: ^6.1.1
   #flutter_bloc: ^6.1.1
 

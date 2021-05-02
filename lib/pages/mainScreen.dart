@@ -22,6 +22,8 @@ List<String> especificos = [
   "MercadoLibre",
   "Prex",
   "MercadoPago",
+  "Apple",
+  "Github",
   "PedidosYa",
   "Pinterest",
   "Skype",
@@ -59,7 +61,9 @@ class _InicioState extends State<Inicio> {
           mainAxisSize: MainAxisSize.max,
           children: [
             SocialRow(),
-            Expanded(child: Lista()),
+            Expanded(
+              child: Lista(),
+            ),
           ],
         ),
         backgroundColor: systemInf.colorFondoPrincipal,

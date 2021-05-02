@@ -39,6 +39,7 @@ class _ListaState extends State<Lista> {
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
+                  shrinkWrap: true,
                   itemCount: snapshot.data.length,
                   padding:
                       EdgeInsets.only(top: 5, bottom: 0, left: 10, right: 10),

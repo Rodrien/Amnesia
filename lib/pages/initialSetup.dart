@@ -106,17 +106,14 @@ class _SetupState extends State<Setup> {
                 ),
                 Center(
                   child: ElevatedButton(
-                    style: ButtonStyle(
-                        padding: MaterialStateProperty.all(
-                          EdgeInsets.only(
-                            top: 20,
-                            bottom: 20,
-                            left: 70,
-                            right: 70,
-                          ),
-                        ),
-                        backgroundColor: MaterialStateProperty.all(
-                            systemInf.colorFondoPasswords)),
+                    style: ElevatedButton.styleFrom(
+                      primary: systemInf.colorCajonPasswords,
+                      padding: EdgeInsets.only(
+                          top: 20, bottom: 20, left: 40, right: 40),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
                     onPressed: () {
                       //setear la passmaestra, en caso que todo salga bien entonces cambio firstBoot a false
                       //y abro el inicio

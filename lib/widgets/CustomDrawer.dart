@@ -1,3 +1,4 @@
+import 'package:amnesia/pages/contact.dart';
 import 'package:amnesia/providers/systemInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +30,7 @@ class CustomDrawer extends StatelessWidget {
                         bottom: 5,
                       ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(20),
                         child: ListTile(
                           leading: Icon(
                             Icons.create_rounded,
@@ -51,14 +52,11 @@ class CustomDrawer extends StatelessWidget {
                         bottom: 5,
                       ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(20),
                         child: ListTile(
                           leading: Icon(
                             Icons.import_export_rounded,
                             color: Colors.white,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
                           ),
                           tileColor: systemInf.colorFondoPrincipal,
                           title: Text(
@@ -76,14 +74,11 @@ class CustomDrawer extends StatelessWidget {
                         bottom: 5,
                       ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(20),
                         child: ListTile(
                           leading: Icon(
                             Icons.settings,
                             color: Colors.white,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
                           ),
                           tileColor: systemInf.colorFondoPrincipal,
                           title: Text(
@@ -101,21 +96,26 @@ class CustomDrawer extends StatelessWidget {
                         bottom: 5,
                       ),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
+                        borderRadius: BorderRadius.circular(20),
                         child: ListTile(
                           leading: Icon(
                             Icons.contact_support_rounded,
                             color: Colors.white,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30),
                           ),
                           tileColor: systemInf.colorFondoPrincipal,
                           title: Text(
                             "Contacto",
                             style: TextStyle(color: Colors.white),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) {
+                                return Contact();
+                              }),
+                            );
+                          },
                           selectedTileColor: Colors.white,
                         ),
                       ),
