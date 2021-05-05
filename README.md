@@ -37,7 +37,6 @@ Gestor de contraseñas opensource creado con Flutter. (en proceso)
 user preferences para guardar cosas de theme:
 https://medium.com/flutter-community/shared-preferences-how-to-save-flutter-application-settings-and-user-preferences-for-later-554d08671ae9
 agrregar iconos de:
-- github
 -->
 
 <!-- 
@@ -46,4 +45,8 @@ COMANDOS UTILES
     flutter pub run flutter_launcher_icons:main
 - Crear el APK
     flutter build apk --split-per-abi (en la raiz del directorio)
+-->
+
+<!-- IDEA LOGO
+    el escudo actual pero con la huella del anterior
 -->

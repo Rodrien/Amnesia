@@ -123,6 +123,21 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
             ),
+            Container(
+              alignment: Alignment.centerLeft,
+              margin: EdgeInsets.only(left: 0),
+              padding: EdgeInsets.only(
+                top: 0,
+                bottom: 0,
+              ),
+              child: IconButton(
+                icon: Icon(
+                  Icons.lightbulb_outline_rounded,
+                  color: Colors.white,
+                ),
+                onPressed: () {}, //open bottom drawer to change theme
+              ),
+            ),
           ],
         ),
       ),

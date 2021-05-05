@@ -19,9 +19,16 @@ class Contact extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CircleAvatar(
-                  radius: 70,
+                  radius: 90,
                   backgroundColor: Colors.transparent,
                   backgroundImage: AssetImage('assets/icon.png'),
+                ),
+                Text(
+                  "Ante cualquier problema o sugerencia",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -115,7 +122,10 @@ class Contact extends StatelessWidget {
                 ),
                 Text(
                   "Creado por Enrique Rodriguez",
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                  ),
                 ),
               ],
             ),
