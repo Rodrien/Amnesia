@@ -1,6 +1,6 @@
 # Amnesia Password Manager
-<img src="/assets/icon.png" height= "500">
-Gestor de contraseñas opensource creado con Flutter. (en proceso) 
+<img src="/assets/icon.png">
+Gestor de contraseñas opensource creado con Flutter. 
 
 ## Funcionalidades 
 - [x] Facildiad de uso
@@ -15,11 +15,11 @@ Gestor de contraseñas opensource creado con Flutter. (en proceso)
 
 
 ## Snapshots
-<img src="/Snapshots/Ejemplo19.jpeg" height= "500">
-<img src="/Snapshots/Ejemplo20.jpeg" height= "500">
-<img src="/Snapshots/Ejemplo21.jpeg" height= "500">
-<img src="/Snapshots/Ejemplo22.jpeg" height= "500">
-<img src="/Snapshots/Ejemplo23.jpeg" height= "500">
+<img src="/Snapshots/Ejemplo19.jpeg" height= "200">
+<img src="/Snapshots/Ejemplo20.jpeg" height= "200">
+<img src="/Snapshots/Ejemplo21.jpeg" height= "200">
+<img src="/Snapshots/Ejemplo22.jpeg" height= "200">
+<img src="/Snapshots/Ejemplo23.jpeg" height= "200">
 
 
 ## Como utilizar
@@ -32,11 +32,9 @@ Gestor de contraseñas opensource creado con Flutter. (en proceso)
 <!-- 
 ## A actualizar/agregar/cambiar
 - Agregar encriptacion de las contraseñas (https://pub.dev/packages/encrypt,https://pub.dev/packages/aes_crypt)
-- Tema claro, tema oscuro y el actual es el tema amnesia (a lo tw)
 
 user preferences para guardar cosas de theme:
 https://medium.com/flutter-community/shared-preferences-how-to-save-flutter-application-settings-and-user-preferences-for-later-554d08671ae9
-
 agrregar iconos de:
 - github
 -->

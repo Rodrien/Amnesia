@@ -15,7 +15,6 @@ class CustomDrawer extends StatelessWidget {
             Container(
               color: systemInf.colorFondoPrincipal,
               height: 150,
-              child: Text("aux"),
             ),
             Expanded(
               child: Container(
@@ -125,18 +124,33 @@ class CustomDrawer extends StatelessWidget {
               ),
             ),
             Container(
-              alignment: Alignment.centerLeft,
-              margin: EdgeInsets.only(left: 0),
-              padding: EdgeInsets.only(
-                top: 0,
-                bottom: 0,
-              ),
-              child: IconButton(
-                icon: Icon(
-                  Icons.lightbulb_outline_rounded,
-                  color: Colors.white,
+              color: systemInf.colorFondoPrincipal,
+              height: 20,
+              child: RichText(
+                text: TextSpan(
+                  children: <TextSpan>[
+                    TextSpan(
+                      text: "Creado por",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                    TextSpan(
+                      text: " Kike Dev",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: systemInf.colorImportante,
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.italic,
+                        letterSpacing: 1,
+                      ),
+                    )
+                  ],
                 ),
-                onPressed: () {}, //open bottom drawer to change theme
               ),
             ),
           ],
