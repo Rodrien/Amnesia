@@ -12,10 +12,10 @@ class CustomDrawer extends StatelessWidget {
         color: systemInf.colorFondoPrincipal,
         child: Column(
           children: [
-            Container(
+            /*Container(
               color: systemInf.colorFondoPrincipal,
               height: 150,
-            ),
+            ),*/
             Expanded(
               child: Container(
                 //aca un listview cion opciones
@@ -119,36 +119,6 @@ class CustomDrawer extends StatelessWidget {
                         ),
                       ),
                     ),
-                  ],
-                ),
-              ),
-            ),
-            Container(
-              color: systemInf.colorFondoPrincipal,
-              height: 20,
-              child: RichText(
-                text: TextSpan(
-                  children: <TextSpan>[
-                    TextSpan(
-                      text: "Creado por",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 1,
-                      ),
-                    ),
-                    TextSpan(
-                      text: " Kike Dev",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: systemInf.colorImportante,
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.italic,
-                        letterSpacing: 1,
-                      ),
-                    )
                   ],
                 ),
               ),

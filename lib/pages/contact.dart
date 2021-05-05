@@ -46,7 +46,11 @@ class Contact extends StatelessWidget {
                           onPressed: () async {
                             const url = 'https://twitter.com/Rodrien98';
                             if (await canLaunch(url)) {
-                              await launch(url);
+                              await launch(
+                                url,
+                                forceSafariVC: true,
+                                forceWebView: false,
+                              );
                             } else {
                               throw 'Could not launch $url';
                             }
@@ -65,7 +69,11 @@ class Contact extends StatelessWidget {
                           onPressed: () async {
                             const url = 'https://github.com/Rodrien';
                             if (await canLaunch(url)) {
-                              await launch(url);
+                              await launch(
+                                url,
+                                forceSafariVC: true,
+                                forceWebView: false,
+                              );
                             } else {
                               throw 'Could not launch $url';
                             }
@@ -87,7 +95,7 @@ class Contact extends StatelessWidget {
                               await launch(
                                 url,
                                 forceSafariVC: true,
-                                forceWebView: true,
+                                forceWebView: false,
                               );
                             } else {
                               throw 'Could not launch $url';
