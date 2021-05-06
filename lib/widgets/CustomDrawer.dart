@@ -1,4 +1,5 @@
 import 'package:amnesia/pages/contact.dart';
+import 'package:amnesia/pages/randomGenerator.dart';
 import 'package:amnesia/providers/systemInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -40,7 +41,15 @@ class CustomDrawer extends StatelessWidget {
                             "Generador de contraseñas",
                             style: TextStyle(color: Colors.white),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) {
+                                return RandomGeneratorPage();
+                              }),
+                            );
+                          },
                           selectedTileColor: Colors.white,
                         ),
                       ),

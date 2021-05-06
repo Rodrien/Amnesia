@@ -5,7 +5,7 @@ Gestor de contraseñas opensource creado con Flutter. (en proceso)
 ## Funcionalidades 
 - [x] Facildiad de uso
 - [x] Almacenamiento local
-- [ ] Generador de contraseñas
+- [x] Generador de contraseñas
 - [ ] Tema claro
 - [ ] Tema oscuro
 - [x] Autenticacion con contraseña maestra
