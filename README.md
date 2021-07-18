@@ -32,6 +32,7 @@ Gestor de contraseñas opensource creado con Flutter. (en proceso)
 <!-- 
 ## A actualizar/agregar/cambiar
 - Agregar encriptacion de las contraseñas (https://pub.dev/packages/encrypt,https://pub.dev/packages/aes_crypt)
+    (para la clave utilizar la clave maestra)
 - Tema claro, tema oscuro y el actual es el tema amnesia (a lo tw)
 
 user preferences para guardar cosas de theme:

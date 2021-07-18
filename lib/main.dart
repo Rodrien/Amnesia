@@ -4,8 +4,11 @@ import 'package:provider/provider.dart';
 import 'package:amnesia/providers/systemInfo.dart';
 import 'package:amnesia/providers/localDatabase.dart';
 import 'package:amnesia/pages/welcome.dart';
+import 'package:amnesia/utils/userPreferences.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserPreferences.init();
   runApp(
     MultiProvider(
       providers: [
@@ -27,8 +30,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dataBase = Provider.of<LocalDatabase>(context);
+    final systemInf = Provider.of<SystemInfo>(context);
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: true,
       title: 'Amnesia',
       theme: ThemeData(
         primaryIconTheme: IconThemeData(color: Colors.white),
@@ -40,6 +44,7 @@ class MyApp extends StatelessWidget {
         future: dataBase.retrieveFirstBoot(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
+            systemInf.init();
             //print(snapshot.data.toString());
             if (snapshot.data.toString() == "True") {
               return Welcome();

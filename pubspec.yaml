@@ -26,10 +26,11 @@ dependencies:
   sqflite:
   path:
   provider: ^5.0.0
-  local_auth_device_credentials: ^0.6.3+10
+  local_auth_device_credentials: ^1.0.0
   flutter_launcher_icons: ^0.8.1
   flutter_spinkit: "^4.1.2"
   url_launcher:
+  shared_preferences: ^2.0.6
   #bloc: ^6.1.1
   #flutter_bloc: ^6.1.1
 

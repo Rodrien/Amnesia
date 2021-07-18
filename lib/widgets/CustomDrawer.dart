@@ -1,5 +1,6 @@
 import 'package:amnesia/pages/contact.dart';
 import 'package:amnesia/pages/randomGenerator.dart';
+import 'package:amnesia/pages/configuration.dart';
 import 'package:amnesia/providers/systemInfo.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -93,7 +94,15 @@ class CustomDrawer extends StatelessWidget {
                             "Configuracion",
                             style: TextStyle(color: Colors.white),
                           ),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (BuildContext context) {
+                                return Configuracion();
+                              }),
+                            );
+                          },
                           selectedTileColor: Colors.white,
                         ),
                       ),
@@ -132,7 +141,7 @@ class CustomDrawer extends StatelessWidget {
                 ),
               ),
             ),
-            Container(
+            /*Container(
               alignment: Alignment.centerLeft,
               margin: EdgeInsets.only(left: 0),
               padding: EdgeInsets.only(
@@ -146,7 +155,7 @@ class CustomDrawer extends StatelessWidget {
                 ),
                 onPressed: () {}, //open bottom drawer to change theme
               ),
-            ),
+            ),*/
           ],
         ),
       ),

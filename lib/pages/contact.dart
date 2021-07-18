@@ -149,7 +149,7 @@ class Contact extends StatelessWidget {
                           bottom: 20,
                         ),
                         child: Text(
-                          "Creado por Enrique Rodriguez",
+                          "Creado por KiroTech",
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 16,
